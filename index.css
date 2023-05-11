@@ -61,3 +61,11 @@
     background:lightgrey;
     margin:20px;
 }
+
+.menu{
+    display:flex;
+}
+.menu-pic{
+    width:400px;
+    height:300px;
+}
