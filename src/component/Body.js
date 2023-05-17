@@ -36,6 +36,7 @@ const Body=()=>{
 
     return (listofresturants?.length === 0)? (<Shimmer/>) :(
         <>
+        <div className="search-box">
         <div className="search-container">
             <input type="text" className="search-input" placeholder="search" value={searchText}
                 onChange={(e)=>setSearchText(e.target.value)}
@@ -57,13 +58,16 @@ const Body=()=>{
                 Top Rated Resturant
             </button>
         </div>
+        </div>
+        </div>
         <div className="res-container">
     {filteredRestaurants.map((restaurant)=>(
        <Link to={"/restaurant/" + restaurant.data.id }  key={restaurant.data.id}><ResturantCard resData={restaurant}/></Link> 
     ))}
 
-        </div>
+        
     </div>
+    
     </>)
 }
 
