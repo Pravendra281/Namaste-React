@@ -20,7 +20,7 @@ async function getRestaurantsInfo(){
     // console.log(json.data)
     // console.log(json?.data?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards[1]?.card?.card?.itemCards.map(item => item?.card?.info)) 
     setRestaurant(json.data)
-    console.log(json)
+    // console.log(json)
     // console.log("string",restaurant)
 }
 
@@ -28,7 +28,9 @@ if(!restaurant){
     return <Shimmer/>;
 }
 
-    return(
+const {itemCards}=restaurant?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards[1]?.card?.card;
+
+    return (
         <>
         <div className="menu">
         <div className="menu-name">
@@ -45,13 +47,13 @@ if(!restaurant){
 
 <div className="menu-details">
         <h1>Menu</h1>
-          <ul>{restaurant?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards[1]?.card?.card?.itemCards.map(index =>
-           <div><li>{index.card.info.id}</li>
-            <h2>{index.card.info.name}</h2></div>)}</ul> 
-
+          <ul>{itemCards.map((item)=>(
+            <li key={item.card.info.id}>{item.card.info.name}-{"Rs."}{item.card.info.price/100 ||item.card.info.defaultprice/100}-------<img className="items-pic" src={CDN_URL + item.card.info.imageId} alt="pic" /> </li>)
+          )}</ul>
             </div>
             </div>
-            </>)
-}
+            </>
+            )
+          }
 
 export default RestaurantMenu;
