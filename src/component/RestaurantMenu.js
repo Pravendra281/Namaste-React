@@ -2,28 +2,13 @@ import { useEffect, useState } from "react";
 import { Link, json, useParams } from "react-router-dom";
 import { CDN_URL } from "../Utils/Constants";
 import Shimmer from "./Shimmer";
+import useRestaurantMenu from "../Utils/useRestaurantMenu";
 
 const RestaurantMenu=()=>{
     const {id}=useParams();
 
-    const[restaurant,setRestaurant]=useState(null)
+    const restaurant=useRestaurantMenu(id)
     
-useEffect(()=>{
-    getRestaurantsInfo();
-},[])
-
-
-
-async function getRestaurantsInfo(){
-    const data =await fetch("https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=12.9351929&lng=77.62448069999999&restaurantId="+ id);
-    const json=await data.json()
-    // console.log(json.data)
-    // console.log(json?.data?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards[1]?.card?.card?.itemCards.map(item => item?.card?.info)) 
-    setRestaurant(json.data)
-    // console.log(json)
-    // console.log("string",restaurant)
-}
-
 if(!restaurant){
     return <Shimmer/>;
 }

@@ -3,6 +3,7 @@ import { useState,useEffect } from "react";
 import resList from "../Utils/MockData";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
+import useOnlineStatus from "../Utils/useOnlineStatus";
 
 
 function filterData(searchText,listofresturants){
@@ -27,6 +28,10 @@ const Body=()=>{
         setListOfResturants(json?.data?.cards[2]?.data?.data?.cards);
         setFilteredRestaurants(json?.data?.cards[2]?.data?.data?.cards);
     }
+
+    const onlineStatus=useOnlineStatus();
+
+    if (onlineStatus===false) return (<h1>Looks like you're Offline!! check your internet connection</h1>)
 
     if (!listofresturants) return null;
 
