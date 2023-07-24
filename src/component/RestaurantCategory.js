@@ -9,7 +9,7 @@ const RestaurantCategory=({data,showItems,setShowIndex})=>{
     setShowIndex();
 // setShowItems (!showItems)
  }
-    console.log(data)
+   //  console.log(data)
     return (<>
     <div className="w-6/12 bg-gray-100 shadow-lg p-4 mx-auto my-4 ">
        <div className="flex justify-between cursor-pointer" onClick={handleClick}>

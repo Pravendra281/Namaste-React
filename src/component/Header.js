@@ -3,10 +3,13 @@ import logo from "../assests/img/food-logo.jpeg"
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../Utils/useOnlineStatus";
 import Grocery from "./Grocery";
+import { useSelector } from "react-redux";
 
 const Header=()=>{
 
     const onlineStatus = useOnlineStatus();
+    //subscribing to the store using selector 
+    const cartItems = useSelector((store)=>store.cart.items)
 
     return(
         <div className="flex justify-between bg-pink-100 shadow-lg border-solid">
@@ -21,7 +24,7 @@ const Header=()=>{
                   <li className="p-4 justify-center text-xl"><Link to="/">Home</Link></li>
                   <li className="p-4 justify-center text-xl"> <Link to="/about">About Us</Link> </li>
                   <li className="p-4 justify-center text-xl"><Link to="/contact">Contact</Link></li>
-                  <li className="p-4 justify-center text-xl">  <Link to="/cart">Cart</Link></li>
+                  <li className="p-4 justify-center text-xl ">  <Link to="/cart">Cart 🛒-({cartItems.length} items)</Link></li>
                   <li className="p-4 justify-center text-xl">  <Link to="/grocery">Grocery</Link></li>
                 </ul>
             </div>
