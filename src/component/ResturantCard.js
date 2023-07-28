@@ -1,14 +1,29 @@
 import { CDN_URL } from "../Utils/Constants";
 const ResturantCard=(props)=>{
     const{resData}=props;
+
+    // const {
+    //   cloudinaryImageId,
+    //   name,
+    //     avgRating,
+    //     cuisines,
+    //     costForTwo,
+    //     deliveryTime,
+    //   } = resData;
+
     return(
-    <div className="m-4 p-4 w-[240px] bg-gray-200 rounded-lg">
-        <img className="rounded-lg" src={CDN_URL + resData.data.cloudinaryImageId}/>
-        <h3 className="py-2 font-bold text-lg">{resData.data.name}</h3>
-        <h3>{resData.data.cuisines.join(", ")}</h3>
-        <h3>{resData.data.avgRating} stars</h3>
-        <h4> ₹{resData.data.costForTwo/100} For Two</h4>
-        <h4>{resData.data.deliveryTime}minutes</h4>
+       <div className="m-4 p-4 w-[280px] h-auto rounded-lg bg-gray-100 hover:bg-gray-300">
+      <img
+        className="rounded-lg"
+        alt="res-logo"
+        src={CDN_URL + resData.info.cloudinaryImageId}
+      />
+      <h3 className="font-bold py-4 text-lg">{resData.info.name}</h3>
+      <h4>{resData.info.cuisines.join(",")}</h4>
+      <h4>{resData.info.avgRating} stars</h4>
+      <h4>{resData.info.costForTwo}</h4>
+      <h4>{resData.info.areaName} </h4>
+      
     </div>)
 }
 

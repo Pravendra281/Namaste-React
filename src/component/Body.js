@@ -7,7 +7,7 @@ import useOnlineStatus from "../Utils/useOnlineStatus";
 
 
 function filterData(searchText,listofresturants){
- const filterData=listofresturants.filter((restaurant)=>restaurant?.data?.name?.toLowerCase()?.includes(searchText.toLowerCase()));
+ const filterData=listofresturants.filter((restaurant)=>restaurant?.info?.name?.toLowerCase()?.includes(searchText.toLowerCase()));
  return filterData;
 }
 
@@ -24,11 +24,14 @@ const Body=()=>{
     },[])
 
     async function getRestaurants(){
-        const data=await fetch("https://corsproxy.io/?https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.9351929&lng=77.62448069999999&page_type=DESKTOP_WEB_LISTING");
+        const data=await fetch("https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.9351929&lng=77.62448069999999&page_type=DESKTOP_WEB_LISTING");
         const json=await data.json();
-        // console.log(json)
-        setListOfResturants(json?.data?.cards[2]?.data?.data?.cards);
-        setFilteredRestaurants(json?.data?.cards[2]?.data?.data?.cards);
+        console.log(json)
+        // setListOfResturants(json?.data?.cards[2]?.data?.data?.cards);
+        // New Api
+        setListOfResturants(json?.data?.cards[5]?.card?.card?.gridElements?.infoWithStyle?.restaurants)
+        // New Api
+        setFilteredRestaurants( json?.data?.cards[5]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
     }
 
     const onlineStatus=useOnlineStatus();
@@ -59,7 +62,7 @@ const Body=()=>{
             <button className="bg-gray-200 px-4 py-2 m-4 rounded-lg"
             onClick={()=>{
                 const filteredList =listofresturants.filter(
-                    (res)=>res.data.avgRating>4);
+                    (res)=>res.info.avgRating>4);
                     setFilteredRestaurants(filteredList);
             }}>
                 Top Rated Resturant
@@ -69,9 +72,9 @@ const Body=()=>{
         </div>
         <div className="flex flex-wrap">
     {filteredRestaurants.map((restaurant)=>(
-       <Link to={"/restaurant/" + restaurant.data.id }  key={restaurant.data.id}>
+       <Link to={"/restaurant/" + restaurant?.info.id }  key={restaurant?.info.id}>
        {
-        restaurant.data.promoted ? <RestaurantCardPromoted resData={restaurant}/>:<ResturantCard resData={restaurant}/>
+        restaurant?.info.promoted ? <RestaurantCardPromoted resData={restaurant?.info}/>:<ResturantCard resData={restaurant}/>
        }</Link> 
     ))}
 
