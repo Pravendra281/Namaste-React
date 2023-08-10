@@ -7,6 +7,8 @@ const Contact=()=>{
             <h3 className="m-4 font-serif font-semibold text-2xl">✉️-pravendrasingh281@gmail.com</h3>
             <h4 className="m-4 font-serif font-semibold text-2xl">🔗-singhtube.netlify.app</h4>
             <h4 className="m-4 font-serif font-semibold text-2xl">linkedIn-https://www.linkedin.com/in/pravendra-singh-821b2b7b/</h4>
+
+            <button className="border border-black p-2 m-2 bg-gray-200 rounded-lg">Submit</button>
         </div>
     )
 }

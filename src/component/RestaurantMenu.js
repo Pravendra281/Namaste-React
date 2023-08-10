@@ -29,7 +29,7 @@ const categories=restaurant?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards
                <div className="text-center">
              <h1 className="my-4 text-xl font-bold shadow-sm">{restaurant?.cards[0]?.card?.card?.info.name}</h1>
         <h2 className="m-2  font-bold">{restaurant?.cards[0]?.card?.card?.info.areaName}</h2>
-        <h2 className="m-2 font-bold">{restaurant?.cards[0]?.card?.card?.info.city}</h2>
+              <h2 className="m-2 font-bold">{restaurant?.cards[0]?.card?.card?.info.city}</h2>
         <img src={CDN_URL + restaurant?.cards[0]?.card?.card.image}/>
         
             {categories.map((category, index)=>(<RestaurantCategory key={category?.card?.card.title} data = {category?.card?.card }

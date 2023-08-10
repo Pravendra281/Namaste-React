@@ -12,7 +12,7 @@ const ResturantCard=(props)=>{
     //   } = resData;
 
     return(
-       <div className="m-4 p-4 w-[280px] h-auto rounded-lg bg-gray-100 hover:bg-gray-300">
+       <div className="m-4 p-4 w-[280px] h-auto rounded-lg bg-gray-200 hover:bg-gray-300">
       <img
         className="rounded-lg"
         alt="res-logo"
@@ -20,7 +20,7 @@ const ResturantCard=(props)=>{
       />
       <h3 className="font-bold py-4 text-lg">{resData.info.name}</h3>
       <h4>{resData.info.cuisines.join(",")}</h4>
-      <h4>{resData.info.avgRating} stars</h4>
+      <h4 className="bg-green-300 w-12 rounded-full">{resData.info.avgRating} ⭐</h4>
       <h4>{resData.info.costForTwo}</h4>
       <h4>{resData.info.areaName} </h4>
       
